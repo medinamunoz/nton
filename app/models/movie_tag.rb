@@ -3,5 +3,4 @@ class MovieTag < ApplicationRecord
   belongs_to :tag
 
 
-
 end

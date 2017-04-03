@@ -45,6 +45,11 @@ class MoviesController < ApplicationController
   # PATCH/PUT /movies/1
   # PATCH/PUT /movies/1.json
   def update
+    tags_ids = movie_params["tags_ids"].delete_if{ |x| x.empty? }
+    @tag = Tag.find(tags_ids)
+    @movie.tags << @tag
+
+
     respond_to do |format|
       if @movie.update(movie_params)
         format.html { redirect_to @movie, notice: 'Movie was successfully updated.' }
